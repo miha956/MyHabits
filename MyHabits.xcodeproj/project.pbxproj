@@ -16,6 +16,7 @@
 		A91F6DE32AFFAC96005AE9D9 /* MyHabitsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6DE22AFFAC96005AE9D9 /* MyHabitsTests.swift */; };
 		A91F6DED2AFFAC96005AE9D9 /* MyHabitsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6DEC2AFFAC96005AE9D9 /* MyHabitsUITests.swift */; };
 		A91F6DEF2AFFAC96005AE9D9 /* MyHabitsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6DEE2AFFAC96005AE9D9 /* MyHabitsUITestsLaunchTests.swift */; };
+		A91F6E022AFFB385005AE9D9 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6E012AFFB385005AE9D9 /* HabitsStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A91F6DE82AFFAC96005AE9D9 /* MyHabitsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHabitsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91F6DEC2AFFAC96005AE9D9 /* MyHabitsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHabitsUITests.swift; sourceTree = "<group>"; };
 		A91F6DEE2AFFAC96005AE9D9 /* MyHabitsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHabitsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A91F6E012AFFB385005AE9D9 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				A91F6DCB2AFFAC95005AE9D9 /* AppDelegate.swift */,
 				A91F6DCD2AFFAC95005AE9D9 /* SceneDelegate.swift */,
 				A91F6DCF2AFFAC95005AE9D9 /* ViewController.swift */,
+				A91F6E012AFFB385005AE9D9 /* HabitsStore.swift */,
 				A91F6DD12AFFAC95005AE9D9 /* Main.storyboard */,
 				A91F6DD42AFFAC96005AE9D9 /* Assets.xcassets */,
 				A91F6DD62AFFAC96005AE9D9 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A91F6E022AFFB385005AE9D9 /* HabitsStore.swift in Sources */,
 				A91F6DD02AFFAC95005AE9D9 /* ViewController.swift in Sources */,
 				A91F6DCC2AFFAC95005AE9D9 /* AppDelegate.swift in Sources */,
 				A91F6DCE2AFFAC95005AE9D9 /* SceneDelegate.swift in Sources */,
