@@ -18,16 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        //let rootViewController = HabitsViewController()
-        //let navigationController = UINavigationController(rootViewController: rootViewController)
         window?.rootViewController = MainTabBarController()
         window?.makeKeyAndVisible()
-        
-//        let navBarAppearance = UINavigationBarAppearance()
-//            navBarAppearance.shadowColor = UIColor(red: 60/255, green: 60/255, blue: 0/255, alpha: 0.29)
-//            navBarAppearance.backgroundColor = UIColor.white.withAlphaComponent(1)
-//            navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
- 
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

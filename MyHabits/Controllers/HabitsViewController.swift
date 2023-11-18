@@ -38,13 +38,20 @@ class HabitsViewController: UIViewController {
     }
     
     @objc func addButtonTapped() {
-        // Код, который выполнится при нажатии на кнопку
+        
+        guard let navigationController = navigationController else { return }
+        navigationController.navigationBar.prefersLargeTitles = false
+        let vc = HabitViewController()
+        
+        navigationController.pushViewController(vc, animated: true)
+
     }
 }
     
     // MARK: - habitsCollection
 
 extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         10
     }
@@ -69,6 +76,13 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = HabitViewController()
+        vc.modalPresentationStyle = .formSheet
+        vc.modalTransitionStyle = .coverVertical
+        present(vc, animated: true)
+    }
+    
     
     private func setHabitsCollection() {
         
@@ -76,7 +90,7 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         layout.scrollDirection = .vertical
         layout.sectionInset.top = 25
         layout.minimumLineSpacing = 12
-        layout.itemSize = CGSize(width: view.bounds.width, height: 130)
+        layout.itemSize = CGSize(width: view.frame.width - 30, height: 130)
         habitsCollection = UICollectionView(
             frame: view.bounds,
             collectionViewLayout: layout)
@@ -101,5 +115,6 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             habitsCollection.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
             habitsCollection.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15)
         ])
+        
     }
 }

@@ -25,7 +25,7 @@ class MainTabBarController: UITabBarController {
         navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController.navigationBar.prefersLargeTitles = true
         
-        viewControllers = [
+        self.viewControllers = [
             setVC(
                 viewController: navigationController,
                 title: "Привычки",

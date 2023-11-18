@@ -22,6 +22,7 @@
 		A9D21D832B015C140016BAAF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D822B015C140016BAAF /* MainTabBarController.swift */; };
 		A9D21D852B0242080016BAAF /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */; };
 		A9D21D872B0243AA0016BAAF /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D862B0243AA0016BAAF /* ProgressCollectionViewCell.swift */; };
+		A9D21DD92B08EE060016BAAF /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21DD82B08EE060016BAAF /* HabitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		A9D21D822B015C140016BAAF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9D21D862B0243AA0016BAAF /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9D21DD82B08EE060016BAAF /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				A9D21D822B015C140016BAAF /* MainTabBarController.swift */,
 				A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */,
+				A9D21DD82B08EE060016BAAF /* HabitViewController.swift */,
 				A9D21D762AFFDAC60016BAAF /* InfoViewController.swift */,
 			);
 			path = Controllers;
@@ -315,6 +318,7 @@
 				A91F6E042AFFC679005AE9D9 /* HabitsViewController.swift in Sources */,
 				A9D21D872B0243AA0016BAAF /* ProgressCollectionViewCell.swift in Sources */,
 				A9D21D772AFFDAC60016BAAF /* InfoViewController.swift in Sources */,
+				A9D21DD92B08EE060016BAAF /* HabitViewController.swift in Sources */,
 				A91F6DCE2AFFAC95005AE9D9 /* SceneDelegate.swift in Sources */,
 				A9D21D852B0242080016BAAF /* HabitCollectionViewCell.swift in Sources */,
 			);

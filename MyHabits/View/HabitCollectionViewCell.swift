@@ -71,15 +71,15 @@ class HabitCollectionViewCell: UICollectionViewCell {
             nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20)
         ])
        
-        self.addSubview(repeatDateLabel)
+        self.contentView.addSubview(repeatDateLabel)
         repeatDateLabel.textColor = AppColors.systemGray2.color
         repeatDateLabel.textAlignment = .left
         repeatDateLabel.font = .systemFont(ofSize: 12, weight: .regular)
         NSLayoutConstraint.activate([
             repeatDateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            repeatDateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 35)
+            repeatDateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
-        self.addSubview(dateLabel)
+        self.contentView.addSubview(dateLabel)
         dateLabel.textColor = AppColors.systemGray2.color
         dateLabel.textAlignment = .left
         dateLabel.font = .systemFont(ofSize: 12, weight: .regular)
@@ -88,15 +88,15 @@ class HabitCollectionViewCell: UICollectionViewCell {
             dateLabel.leadingAnchor.constraint(equalTo: repeatDateLabel.trailingAnchor, constant: 4)
         ])
         
-        self.addSubview(counterLabel)
+        self.contentView.addSubview(counterLabel)
         counterLabel.textColor = AppColors.systemGray.color
         counterLabel.textAlignment = .left
         counterLabel.font = .systemFont(ofSize: 13, weight: .semibold)
         NSLayoutConstraint.activate([
             counterLabel.topAnchor.constraint(equalTo: repeatDateLabel.bottomAnchor, constant: 30),
-            counterLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 35)
+            counterLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
-        self.addSubview(counterNumber)
+        self.contentView.addSubview(counterNumber)
         counterNumber.textColor = AppColors.systemGray.color
         counterNumber.textAlignment = .left
         counterNumber.font = .systemFont(ofSize: 13, weight: .semibold)
