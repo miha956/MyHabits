@@ -13,7 +13,7 @@ class HabitsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = AppColors.lightGray.color
+        view.backgroundColor = .appLightGray
         
         addHabitButton()
         setHabitsCollection()
@@ -33,7 +33,7 @@ class HabitsViewController: UIViewController {
             barButtonSystemItem: .add,
             target: self,
             action: #selector(addButtonTapped))
-        addHabitButton.tintColor = AppColors.purpleColor.color
+        addHabitButton.tintColor = .appPurple
         navigationItem.rightBarButtonItem = addHabitButton
     }
     
@@ -98,7 +98,7 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         habitsCollection.delegate = self
         habitsCollection.translatesAutoresizingMaskIntoConstraints = false
         habitsCollection.isScrollEnabled = true
-        habitsCollection.backgroundColor = AppColors.lightGray.color
+        habitsCollection.backgroundColor = .appLightGray
         habitsCollection.register(
             HabitCollectionViewCell.self,
             forCellWithReuseIdentifier: "habitCell")

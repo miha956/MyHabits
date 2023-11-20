@@ -24,6 +24,7 @@ class MainTabBarController: UITabBarController {
         navBarAppearance.backgroundColor = UIColor.white.withAlphaComponent(1)
         navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.tintColor = .appPurple
         
         self.viewControllers = [
             setVC(

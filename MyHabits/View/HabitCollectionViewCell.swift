@@ -72,7 +72,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         ])
        
         self.contentView.addSubview(repeatDateLabel)
-        repeatDateLabel.textColor = AppColors.systemGray2.color
+        repeatDateLabel.textColor = .systemGray2
         repeatDateLabel.textAlignment = .left
         repeatDateLabel.font = .systemFont(ofSize: 12, weight: .regular)
         NSLayoutConstraint.activate([
@@ -80,7 +80,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
             repeatDateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
         self.contentView.addSubview(dateLabel)
-        dateLabel.textColor = AppColors.systemGray2.color
+        dateLabel.textColor = .systemGray2
         dateLabel.textAlignment = .left
         dateLabel.font = .systemFont(ofSize: 12, weight: .regular)
         NSLayoutConstraint.activate([
@@ -89,7 +89,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         ])
         
         self.contentView.addSubview(counterLabel)
-        counterLabel.textColor = AppColors.systemGray.color
+        counterLabel.textColor = .systemGray
         counterLabel.textAlignment = .left
         counterLabel.font = .systemFont(ofSize: 13, weight: .semibold)
         NSLayoutConstraint.activate([
@@ -97,7 +97,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
             counterLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
         self.contentView.addSubview(counterNumber)
-        counterNumber.textColor = AppColors.systemGray.color
+        counterNumber.textColor = .systemGray
         counterNumber.textAlignment = .left
         counterNumber.font = .systemFont(ofSize: 13, weight: .semibold)
         NSLayoutConstraint.activate([

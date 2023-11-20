@@ -21,9 +21,10 @@ class HabitViewController: UIViewController {
         habitName.text = "Название"
         return habitName
     }()
-    let habitTextField: UITextField = {
+    let habitNameTextField: UITextField = {
         let habitTextField = UITextField()
         habitTextField.placeholder = "Бегать по утрам, спать 8 и т.п."
+        habitTextField.font = .systemFont(ofSize: 17, weight: .semibold)
         habitTextField.translatesAutoresizingMaskIntoConstraints = false
         return habitTextField
     }()
@@ -58,7 +59,7 @@ class HabitViewController: UIViewController {
     let dateLabel: UILabel = {
         let dateLabel = UILabel()
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.text = "7:30"
+        dateLabel.text = "--:--"
         return dateLabel
     }()
     let datePicker: UIDatePicker = {
@@ -70,33 +71,28 @@ class HabitViewController: UIViewController {
         return datePicker
     }()
     
-    let colorPicker = UIColorPickerViewController()
-    
+    deinit {
+        print("HabitViewController deinit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         title = "Создать"
         setHabitView()
-        colorPickerButton.addTarget(self, action: #selector(pickColor), for: .touchUpInside)
+        saveHabitButton()
+        
     }
     
-    @objc func pickColor() {
-        
-        let colorPicker = UIColorPickerViewController()
-            colorPicker.title = "Background Color"
-            colorPicker.supportsAlpha = false
-            colorPicker.delegate = self
-            colorPicker.modalPresentationStyle = .popover
-        if #available(iOS 16.0, *) {
-            colorPicker.popoverPresentationController?.sourceItem = self.navigationItem.rightBarButtonItem
-        } else {
-            // Fallback on earlier versions
-        }
-            self.present(colorPicker, animated: true)
-    }
+
+    
+    // MARK: - setHabitView
     
     private func setHabitView() {
+        
+        colorPickerButton.addTarget(self, action: #selector(pickColor), for: .touchUpInside)
+        datePicker.addTarget(self, action: #selector(datePicked), for: .valueChanged)
+        habitNameTextField.textColor = colorPickerButton.backgroundColor
         
         self.view.addSubview(scrollView)
         scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
@@ -114,15 +110,15 @@ class HabitViewController: UIViewController {
             habitName.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16)
             
         ])
-        scrollView.addSubview(habitTextField)
+        scrollView.addSubview(habitNameTextField)
         NSLayoutConstraint.activate([
-            habitTextField.topAnchor.constraint(equalTo: habitName.bottomAnchor, constant: 7),
-            habitTextField.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
-            habitTextField.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 16)
+            habitNameTextField.topAnchor.constraint(equalTo: habitName.bottomAnchor, constant: 7),
+            habitNameTextField.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
+            habitNameTextField.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 16)
         ])
         scrollView.addSubview(colorLabel)
         NSLayoutConstraint.activate([
-            colorLabel.topAnchor.constraint(equalTo: habitTextField.bottomAnchor, constant: 15),
+            colorLabel.topAnchor.constraint(equalTo: habitNameTextField.bottomAnchor, constant: 15),
             colorLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16)
         ])
         scrollView.addSubview(colorPickerButton)
@@ -151,10 +147,60 @@ class HabitViewController: UIViewController {
             datePicker.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ])
     }
+    
+    // MARK: - saveHabitButton
+    
+    private func saveHabitButton() {
+        
+        let saveHabitButton = UIBarButtonItem(
+            barButtonSystemItem: .save,
+            target: self,
+            action: #selector(saveHabitButtonTapped))
+        saveHabitButton.tintColor = .appPurple
+        navigationItem.rightBarButtonItem = saveHabitButton
+    
+    }
+    
+    @objc func saveHabitButtonTapped() {
+        
+//        let newHabit = Habit(name: "Выпить стакан воды перед завтраком",
+//                             date: Date(),
+//                             color: .systemRed)
+//        let store = HabitsStore.shared
+//        store.habits.append(newHabit)
+
+    }
 }
 
+    // MARK: - ColorPicker
+
 extension HabitViewController: UIColorPickerViewControllerDelegate {
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+    
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
         colorPickerButton.backgroundColor = viewController.selectedColor
+        habitNameTextField.textColor = viewController.selectedColor
     }
+    
+    @objc func pickColor() {
+        
+        let colorPicker = UIColorPickerViewController()
+            colorPicker.title = "Background Color"
+            colorPicker.supportsAlpha = false
+            colorPicker.delegate = self
+            guard let buttonColor = colorPickerButton.backgroundColor else { return }
+            colorPicker.selectedColor = buttonColor
+            colorPicker.modalPresentationStyle = .popover
+            self.present(colorPicker, animated: true)
+    }
+    
+    // MARK: - datePicker
+    
+    @objc func datePicked() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let locationTime = dateFormatter.string(from: datePicker.date)
+        dateLabel.text = locationTime
+    }
+
 }
