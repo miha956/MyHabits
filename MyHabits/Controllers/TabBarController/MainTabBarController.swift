@@ -8,6 +8,7 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,9 @@ class MainTabBarController: UITabBarController {
         navBarAppearance.shadowColor = UIColor(red: 60/255, green: 60/255, blue: 0/255, alpha: 0.29)
         navBarAppearance.backgroundColor = UIColor.white.withAlphaComponent(1)
         navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationController.navigationBar.standardAppearance = navBarAppearance
+        navigationController.navigationBar.compactAppearance = navBarAppearance
+        navigationController.navigationBar.compactScrollEdgeAppearance = navBarAppearance
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.tintColor = .appPurple
         

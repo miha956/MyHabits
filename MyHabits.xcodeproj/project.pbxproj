@@ -23,6 +23,7 @@
 		A9D21D852B0242080016BAAF /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */; };
 		A9D21D872B0243AA0016BAAF /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D862B0243AA0016BAAF /* ProgressCollectionViewCell.swift */; };
 		A9D21DD92B08EE060016BAAF /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21DD82B08EE060016BAAF /* HabitViewController.swift */; };
+		A9D85F942B3642E40008B461 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D85F932B3642E40008B461 /* ExtensionUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9D21D862B0243AA0016BAAF /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9D21DD82B08EE060016BAAF /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
+		A9D85F932B3642E40008B461 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +115,9 @@
 		A91F6DCA2AFFAC95005AE9D9 /* MyHabits */ = {
 			isa = PBXGroup;
 			children = (
-				A9D21D7A2AFFDAEA0016BAAF /* Other */,
+				A9D21D7A2AFFDAEA0016BAAF /* AppDelegate */,
+				A9D85F922B3642B20008B461 /* Lybrary */,
 				A9D21D782AFFDACB0016BAAF /* Model */,
-				A9D21D792AFFDADA0016BAAF /* View */,
 				A9D21D7B2AFFDCCE0016BAAF /* Controllers */,
 				A91F6DD42AFFAC96005AE9D9 /* Assets.xcassets */,
 				A9D21D802B0154E80016BAAF /* Storyboard.storyboard */,
@@ -150,7 +152,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A9D21D792AFFDADA0016BAAF /* View */ = {
+		A9D21D7A2AFFDAEA0016BAAF /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				A91F6DCB2AFFAC95005AE9D9 /* AppDelegate.swift */,
+				A91F6DCD2AFFAC95005AE9D9 /* SceneDelegate.swift */,
+				A9D21D7E2B0003230016BAAF /* AppColors.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A9D21D7B2AFFDCCE0016BAAF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9D85F902B36410B0008B461 /* TabBarController */,
+				A9D85F912B3641400008B461 /* InfoViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A9D85F8E2B3640B00008B461 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */,
@@ -159,25 +180,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A9D21D7A2AFFDAEA0016BAAF /* Other */ = {
+		A9D85F8F2B3640D50008B461 /* HabitsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A91F6DCB2AFFAC95005AE9D9 /* AppDelegate.swift */,
-				A91F6DCD2AFFAC95005AE9D9 /* SceneDelegate.swift */,
-				A9D21D7E2B0003230016BAAF /* AppColors.swift */,
+				A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */,
+				A9D21DD82B08EE060016BAAF /* HabitViewController.swift */,
+				A9D85F8E2B3640B00008B461 /* View */,
 			);
-			path = Other;
+			path = HabitsViewController;
 			sourceTree = "<group>";
 		};
-		A9D21D7B2AFFDCCE0016BAAF /* Controllers */ = {
+		A9D85F902B36410B0008B461 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
 				A9D21D822B015C140016BAAF /* MainTabBarController.swift */,
-				A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */,
-				A9D21DD82B08EE060016BAAF /* HabitViewController.swift */,
+				A9D85F8F2B3640D50008B461 /* HabitsViewController */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		A9D85F912B3641400008B461 /* InfoViewController */ = {
+			isa = PBXGroup;
+			children = (
 				A9D21D762AFFDAC60016BAAF /* InfoViewController.swift */,
 			);
-			path = Controllers;
+			path = InfoViewController;
+			sourceTree = "<group>";
+		};
+		A9D85F922B3642B20008B461 /* Lybrary */ = {
+			isa = PBXGroup;
+			children = (
+				A9D85F932B3642E40008B461 /* ExtensionUIView.swift */,
+			);
+			path = Lybrary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +355,7 @@
 				A9D21D772AFFDAC60016BAAF /* InfoViewController.swift in Sources */,
 				A9D21DD92B08EE060016BAAF /* HabitViewController.swift in Sources */,
 				A91F6DCE2AFFAC95005AE9D9 /* SceneDelegate.swift in Sources */,
+				A9D85F942B3642E40008B461 /* ExtensionUIView.swift in Sources */,
 				A9D21D852B0242080016BAAF /* HabitCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

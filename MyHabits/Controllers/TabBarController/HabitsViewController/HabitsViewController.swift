@@ -14,11 +14,14 @@ class HabitsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .appLightGray
-        
         addHabitButton()
         setHabitsCollection()
         
         title = "Сегодня"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        habitsCollection.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,20 +43,20 @@ class HabitsViewController: UIViewController {
     @objc func addButtonTapped() {
         
         guard let navigationController = navigationController else { return }
-        navigationController.navigationBar.prefersLargeTitles = false
         let vc = HabitViewController()
         
         navigationController.pushViewController(vc, animated: true)
 
     }
+
 }
     
     // MARK: - habitsCollection
 
-extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        HabitsStore.shared.habits.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,24 +66,27 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return progressCell
         default:
             let habitCell = collectionView.dequeueReusableCell(withReuseIdentifier: "habitCell", for: indexPath) as! HabitCollectionViewCell
+            
+            habitCell.updateData(habits: HabitsStore.shared.habits, indexPath: indexPath)
 
             return habitCell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
-            return CGSize(width: 500, height: 50)
+        if indexPath.row == 0 {
+            return CGSize(width: view.frame.width - 30, height: 60)
         } else {
-            return CGSize(width: 500, height: 500)
+            return CGSize(width: view.frame.width - 30, height: 130)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let navigationController = navigationController else { return }
         let vc = HabitViewController()
-        vc.modalPresentationStyle = .formSheet
-        vc.modalTransitionStyle = .coverVertical
-        present(vc, animated: true)
+        vc.habitNameTextField.text = HabitsStore.shared.habits[indexPath.row - 1].name
+        navigationController.pushViewController(vc, animated: true)
     }
     
     
@@ -90,10 +96,8 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         layout.scrollDirection = .vertical
         layout.sectionInset.top = 25
         layout.minimumLineSpacing = 12
-        layout.itemSize = CGSize(width: view.frame.width - 30, height: 130)
-        habitsCollection = UICollectionView(
-            frame: view.bounds,
-            collectionViewLayout: layout)
+        habitsCollection = UICollectionView(frame: self.view.bounds,
+                                            collectionViewLayout: layout)
         habitsCollection.dataSource = self
         habitsCollection.delegate = self
         habitsCollection.translatesAutoresizingMaskIntoConstraints = false

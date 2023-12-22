@@ -58,6 +58,7 @@ class HabitViewController: UIViewController {
     }()
     let dateLabel: UILabel = {
         let dateLabel = UILabel()
+        dateLabel.textColor = .appPurple
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.text = "--:--"
         return dateLabel
@@ -77,19 +78,21 @@ class HabitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
-        title = "Создать"
+        
         setHabitView()
         saveHabitButton()
         
     }
     
-
     
     // MARK: - setHabitView
     
     private func setHabitView() {
         
+        view.backgroundColor = .white
+        title = "Создать"
+        
+        navigationItem.largeTitleDisplayMode = .never
         colorPickerButton.addTarget(self, action: #selector(pickColor), for: .touchUpInside)
         datePicker.addTarget(self, action: #selector(datePicked), for: .valueChanged)
         habitNameTextField.textColor = colorPickerButton.backgroundColor
@@ -162,12 +165,20 @@ class HabitViewController: UIViewController {
     }
     
     @objc func saveHabitButtonTapped() {
+        guard let habitName = habitNameTextField.text else { return }
+        guard let buttonColor = colorPickerButton.backgroundColor else { return }
+        guard let time = dateLabel.text else { return }
+        // некорретно отображается timeZone
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        guard let locationTime = dateFormatter.date(from: time) else { return }
         
-//        let newHabit = Habit(name: "Выпить стакан воды перед завтраком",
-//                             date: Date(),
-//                             color: .systemRed)
-//        let store = HabitsStore.shared
-//        store.habits.append(newHabit)
+        let newHabit = Habit(name: habitName,
+                             date: locationTime,
+                             color: buttonColor)
+        let store = HabitsStore.shared
+        store.habits.append(newHabit)
+        navigationController?.popViewController(animated: true)
 
     }
 }
