@@ -7,14 +7,17 @@
 
 import UIKit
 
-class HabitCollectionViewCell: UICollectionViewCell {
+final class HabitCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
+    var tapTrackHabit: (() -> Void)?
     
     // MARK: - Subviews
     
     private let nameLabel:  UILabel = {
         let nameLabel = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.textColor = AppColors.blueColor.color
         nameLabel.textAlignment = .left
         nameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         nameLabel.text = "nameLabel"
@@ -28,15 +31,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         repeatDateLabel.font = .systemFont(ofSize: 12, weight: .regular)
         repeatDateLabel.text = "Каждый день в"
         return repeatDateLabel
-    }()
-    private let dateLabel: UILabel = {
-        let dateLabel = UILabel()
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.textColor = .systemGray2
-        dateLabel.textAlignment = .left
-        dateLabel.font = .systemFont(ofSize: 12, weight: .regular)
-        dateLabel.text = "7:30"
-        return dateLabel
     }()
     private let counterLabel: UILabel = {
         let counterLabel = UILabel()
@@ -56,13 +50,10 @@ class HabitCollectionViewCell: UICollectionViewCell {
         counterNumber.text = "2"
         return counterNumber
     }()
-    private let trackHabitButton: UIButton = {
+    lazy var trackHabitButton: UIButton = {
         let trackHabitButton = UIButton(type: .system)
         trackHabitButton.translatesAutoresizingMaskIntoConstraints = false
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 38)
-        let symbolImage = UIImage(systemName: "circle", withConfiguration: symbolConfiguration)
-        trackHabitButton.setImage(symbolImage, for: .normal)
-        trackHabitButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
+        trackHabitButton.addTarget(self, action: #selector(trackHabitButtonTapped), for: .touchUpInside)
         return trackHabitButton
     }()
     
@@ -83,7 +74,9 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     
-    
+    @objc func trackHabitButtonTapped() {
+        tapTrackHabit?()
+    }
     
     // MARK: - Private
     
@@ -96,7 +89,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         
         self.addContentSubviews(nameLabel,
                                 repeatDateLabel,
-                                dateLabel,
                                 counterLabel,
                                 counterNumber,
                                 trackHabitButton)
@@ -109,8 +101,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
             nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
             repeatDateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
             repeatDateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            dateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            dateLabel.leadingAnchor.constraint(equalTo: repeatDateLabel.trailingAnchor, constant: 4),
             counterLabel.topAnchor.constraint(equalTo: repeatDateLabel.bottomAnchor, constant: 30),
             counterLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             counterNumber.topAnchor.constraint(equalTo: repeatDateLabel.bottomAnchor, constant: 30),
@@ -124,11 +114,22 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public
     
-    func updateData(habits: [Habit], indexPath: IndexPath) {
+    public func updateData(habits: [Habit], indexPath: IndexPath) {
         nameLabel.text = habits[indexPath.row - 1].name
         nameLabel.textColor = habits[indexPath.row - 1].color
         trackHabitButton.tintColor = habits[indexPath.row - 1].color
-        dateLabel.text = habits[indexPath.row - 1].date.description
+        repeatDateLabel.text = habits[indexPath.row - 1].dateString
         counterNumber.text = String(habits[indexPath.row - 1].trackDates.count)
+        if habits[indexPath.row - 1].isAlreadyTakenToday == true {
+            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 38)
+            let symbolImage = UIImage(systemName: "checkmark.circle.fill", withConfiguration: symbolConfiguration)
+            trackHabitButton.setImage(symbolImage, for: .normal)
+            trackHabitButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
+        } else {
+            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 38)
+            let symbolImage = UIImage(systemName: "circle", withConfiguration: symbolConfiguration)
+            trackHabitButton.setImage(symbolImage, for: .normal)
+            trackHabitButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
+        }
     }
 }

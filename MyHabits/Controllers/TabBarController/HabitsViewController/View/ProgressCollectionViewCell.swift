@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ProgressCollectionViewCell: UICollectionViewCell {
+final class ProgressCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
+    let store = HabitsStore.shared
     
     // MARK: - Subviews
     
@@ -46,38 +50,51 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setProgressCell()
+        tuneView()
+        addSubViews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setProgressCell() {
-        
+    // MARK: - Private
+    
+    private func tuneView() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
+        todayProgress.progress = store.todayProgress
+        progressCountLabel.text = "\(todayProgress.progress)%"
+    }
+    
+    private func addSubViews() {
+        addContentSubviews(mottoLabel,
+                    progressCountLabel,
+                    todayProgress
+        )
+    }
+    
+    private func setupConstraints() {
+
         
-        self.contentView.addSubview(mottoLabel)
         NSLayoutConstraint.activate([
             mottoLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
             mottoLabel.heightAnchor.constraint(equalToConstant: 18),
-            mottoLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10)
-        ])
-        self.contentView.addSubview(progressCountLabel)
-        NSLayoutConstraint.activate([
+            mottoLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
             progressCountLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
-            progressCountLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10)
-        ])
-        self.contentView.addSubview(todayProgress)
-        NSLayoutConstraint.activate([
+            progressCountLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
             todayProgress.topAnchor.constraint(equalTo: mottoLabel.bottomAnchor, constant: 10),
             todayProgress.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
             todayProgress.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
             todayProgress.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10)
-        ])
-        
-        
+        ])  
     }
     
+    // MARK: - Public
+    public func updateData(habitsStore: HabitsStore) {
+        let store = HabitsStore.shared
+        todayProgress.progress = store.todayProgress
+        progressCountLabel.text = "\(Int(store.todayProgress * 100))%"
+    }
 }

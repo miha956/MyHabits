@@ -18,12 +18,12 @@
 		A91F6E042AFFC679005AE9D9 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */; };
 		A9D21D772AFFDAC60016BAAF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D762AFFDAC60016BAAF /* InfoViewController.swift */; };
 		A9D21D7F2B0003230016BAAF /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D7E2B0003230016BAAF /* AppColors.swift */; };
-		A9D21D812B0154E80016BAAF /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D21D802B0154E80016BAAF /* Storyboard.storyboard */; };
 		A9D21D832B015C140016BAAF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D822B015C140016BAAF /* MainTabBarController.swift */; };
 		A9D21D852B0242080016BAAF /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */; };
 		A9D21D872B0243AA0016BAAF /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D862B0243AA0016BAAF /* ProgressCollectionViewCell.swift */; };
 		A9D21DD92B08EE060016BAAF /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21DD82B08EE060016BAAF /* HabitViewController.swift */; };
 		A9D85F942B3642E40008B461 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D85F932B3642E40008B461 /* ExtensionUIView.swift */; };
+		A9D85F9A2B3A129C0008B461 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D85F992B3A129C0008B461 /* AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,12 +59,12 @@
 		A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		A9D21D762AFFDAC60016BAAF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A9D21D7E2B0003230016BAAF /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		A9D21D802B0154E80016BAAF /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		A9D21D822B015C140016BAAF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9D21D862B0243AA0016BAAF /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9D21DD82B08EE060016BAAF /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		A9D85F932B3642E40008B461 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		A9D85F992B3A129C0008B461 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,6 @@
 				A9D21D782AFFDACB0016BAAF /* Model */,
 				A9D21D7B2AFFDCCE0016BAAF /* Controllers */,
 				A91F6DD42AFFAC96005AE9D9 /* Assets.xcassets */,
-				A9D21D802B0154E80016BAAF /* Storyboard.storyboard */,
 				A91F6DD62AFFAC96005AE9D9 /* LaunchScreen.storyboard */,
 				A91F6DD92AFFAC96005AE9D9 /* Info.plist */,
 			);
@@ -166,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				A9D85F902B36410B0008B461 /* TabBarController */,
-				A9D85F912B3641400008B461 /* InfoViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -195,6 +193,7 @@
 			children = (
 				A9D21D822B015C140016BAAF /* MainTabBarController.swift */,
 				A9D85F8F2B3640D50008B461 /* HabitsViewController */,
+				A9D85F912B3641400008B461 /* InfoViewController */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
@@ -211,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				A9D85F932B3642E40008B461 /* ExtensionUIView.swift */,
+				A9D85F992B3A129C0008B461 /* AlertController.swift */,
 			);
 			path = Lybrary;
 			sourceTree = "<group>";
@@ -321,7 +321,6 @@
 			files = (
 				A91F6DD82AFFAC96005AE9D9 /* LaunchScreen.storyboard in Resources */,
 				A91F6DD52AFFAC96005AE9D9 /* Assets.xcassets in Resources */,
-				A9D21D812B0154E80016BAAF /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D85F9A2B3A129C0008B461 /* AlertController.swift in Sources */,
 				A91F6E022AFFB385005AE9D9 /* HabitsStore.swift in Sources */,
 				A9D21D7F2B0003230016BAAF /* AppColors.swift in Sources */,
 				A91F6DCC2AFFAC95005AE9D9 /* AppDelegate.swift in Sources */,

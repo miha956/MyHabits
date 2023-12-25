@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     
 
     override func viewDidLoad() {
@@ -56,6 +56,6 @@ class MainTabBarController: UITabBarController {
         
         tabBarAppearance.shadowColor = UIColor(red: 60/255, green: 60/255, blue: 0/255, alpha: 0.29)
         tabBar.scrollEdgeAppearance = tabBarAppearance
-
+        tabBar.standardAppearance = tabBarAppearance
     }
 }
