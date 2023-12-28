@@ -35,6 +35,7 @@ final class MainTabBarController: UITabBarController {
         
         habitsNavigationController.navigationBar.prefersLargeTitles = true
         habitsNavigationController.navigationBar.tintColor = .appPurple
+        habitsNavigationController.toolbar.tintColor = .red
         
         self.viewControllers = [
             setVC(

@@ -31,6 +31,7 @@ class InfoViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         titleLabel.text = "Привычка за 21 день"
+        titleLabel.textColor = .black
         return titleLabel
     }()
     private let texteLabel: UILabel = {
@@ -38,6 +39,7 @@ class InfoViewController: UIViewController {
         texteLabel.translatesAutoresizingMaskIntoConstraints = false
         texteLabel.font = .systemFont(ofSize: 17, weight: .regular)
         texteLabel.numberOfLines = 0
+        texteLabel.textColor = .black
         texteLabel.text =
         """
         Прохождение этапов, за которые за 21 день вырабатывается привычка, подчиняется следующему алгоритму:

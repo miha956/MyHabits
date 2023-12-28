@@ -45,6 +45,7 @@ final class HabitViewController: UIViewController {
         habitName.font = .systemFont(ofSize: 13, weight: .semibold)
         habitName.sizeToFit()
         habitName.text = "НАЗВАНИЕ"
+        habitName.textColor = .black
         return habitName
     }()
     private let habitNameTextField: UITextField = {
@@ -57,6 +58,7 @@ final class HabitViewController: UIViewController {
     private let colorLabel: UILabel = {
         let colorLabel = UILabel()
         colorLabel.text = "ЦВЕТ"
+        colorLabel.textColor = .black
         colorLabel.font = .systemFont(ofSize: 13, weight: .semibold)
         colorLabel.translatesAutoresizingMaskIntoConstraints = false
         return colorLabel
@@ -74,6 +76,7 @@ final class HabitViewController: UIViewController {
     private let timelabel: UILabel = {
         let timelabel = UILabel()
         timelabel.text = "ВРЕМЯ"
+        timelabel.textColor = .black
         timelabel.font = .systemFont(ofSize: 13, weight: .semibold)
         timelabel.translatesAutoresizingMaskIntoConstraints = false
         return timelabel
@@ -82,6 +85,7 @@ final class HabitViewController: UIViewController {
         let repeatDateLabel = UILabel()
         repeatDateLabel.translatesAutoresizingMaskIntoConstraints = false
         repeatDateLabel.text = "Каждый день в"
+        repeatDateLabel.textColor = .black
         repeatDateLabel.font = .systemFont(ofSize: 17, weight: .regular)
         return repeatDateLabel
     }()
@@ -168,7 +172,7 @@ final class HabitViewController: UIViewController {
         showAlert(title: "Удалить привычку", message: "Вы хотите удалить привычку \(habitNameTextField.text ?? "error")?", target: self) { [weak self] action in
             guard let index = self?.habitIndex else { return }
             self?.store.habits.remove(at: index)
-            self?.navigationController?.popViewController(animated: true)
+            self?.navigationController?.popToRootViewController(animated: true)
         }
     }
     
