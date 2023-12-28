@@ -7,16 +7,16 @@
 
 import UIKit
 
-class HabitViewController: UIViewController {
+final class HabitViewController: UIViewController {
     
     // MARK: - Properties
     
     enum State {
-           case save
+           case create
            case edit
        }
     
-    private var state: State = State.save
+    private var state: State = State.create
     private let store = HabitsStore.shared
     private var habitIndex: Int?
     
@@ -105,7 +105,7 @@ class HabitViewController: UIViewController {
         let saveHabitButton = UIBarButtonItem(title: "Cохранить", 
                                               style: .plain,
                                               target: self,
-                                              action: #selector(createHabitButtonTapped))
+                                              action: #selector(saveHabitButtonTapped))
         saveHabitButton.tintColor = .appPurple
         return saveHabitButton
     }()
@@ -113,7 +113,7 @@ class HabitViewController: UIViewController {
         let cancelHabitButton = UIBarButtonItem(title: "Отменить",
                                               style: .plain,
                                               target: self,
-                                              action: #selector(cancelCreatingButtonTapped))
+                                              action: #selector(cancelButtonTapped))
         cancelHabitButton.tintColor = .appPurple
         return cancelHabitButton
     }()
@@ -172,7 +172,7 @@ class HabitViewController: UIViewController {
         }
     }
     
-    @objc private func createHabitButtonTapped() {
+    @objc private func saveHabitButtonTapped() {
         
         guard let habitName = habitNameTextField.text else { return }
         guard let buttonColor = colorPickerButton.backgroundColor else { return }
@@ -181,16 +181,19 @@ class HabitViewController: UIViewController {
         let newHabit = Habit(name: habitName,
                              date: date,
                              color: buttonColor)
-        if state == .save {
+        if state == .create {
             store.habits.append(newHabit)
         } else {
             guard let index = habitIndex else { return }
-            store.habits[index] = newHabit
+            store.habits[index].name = habitName
+            store.habits[index].date = date
+            store.habits[index].color = buttonColor
+            store.save()
         }
-        navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
-    @objc private func cancelCreatingButtonTapped() {
+    @objc private func cancelButtonTapped() {
         
         navigationController?.popViewController(animated: true)
     }

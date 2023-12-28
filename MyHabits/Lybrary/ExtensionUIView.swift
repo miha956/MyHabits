@@ -23,3 +23,11 @@ public extension UICollectionViewCell {
         }
     }
 }
+
+public extension UITableViewCell {
+    func addContentSubviews(_ subviews: UIView...) {
+        for i in subviews {
+            self.contentView.addSubview(i)
+        }
+    }
+}

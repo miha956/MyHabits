@@ -94,7 +94,7 @@ final class HabitsViewController: UIViewController {
     @objc func addButtonTapped() {
         
         guard let navigationController = navigationController else { return }
-        let vc = HabitViewController(state: .save)
+        let vc = HabitViewController(state: .create)
         navigationController.pushViewController(vc, animated: true)
     }
 }
@@ -108,13 +108,16 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "progressCell", for: indexPath) as! ProgressCollectionViewCell
+        let habitCell = collectionView.dequeueReusableCell(withReuseIdentifier: "habitCell", for: indexPath) as! HabitCollectionViewCell
+        
         switch indexPath.row {
         case 0 :
-            let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "progressCell", for: indexPath) as! ProgressCollectionViewCell
-            progressCell.updateData(habitsStore: store)
+               progressCell.updateData(habitsStore: store)
+                //progressCell.animateProgress()
             return progressCell
         default:
-            let habitCell = collectionView.dequeueReusableCell(withReuseIdentifier: "habitCell", for: indexPath) as! HabitCollectionViewCell
             habitCell.updateData(habits: store.habits, indexPath: indexPath)
             
             let habit = self.store.habits[indexPath.row - 1]
@@ -123,6 +126,7 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 if habit.isAlreadyTakenToday {
                     print("уже затрекана")
                     habit.trackDates.removeLast()
+                    self.store.save()
                     collectionView.reloadData()
                 } else {
                     print("трекаем привычку")
@@ -145,8 +149,8 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let navigationController = navigationController else { return }
-        let vc = HabitViewController(state: .edit)
-        vc.updateData(store: store, indexPath: indexPath)
+        let vc = HabitDetailsViewController()
+        vc.updateData(indexPath: indexPath)
         navigationController.pushViewController(vc, animated: true)
     }
 }
