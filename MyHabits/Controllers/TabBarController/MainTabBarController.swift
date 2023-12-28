@@ -18,25 +18,31 @@ final class MainTabBarController: UITabBarController {
     
     private func setTabBar() {
         
-        let rootViewController = HabitsViewController()
-        let navigationController = UINavigationController(rootViewController: rootViewController)
+        let habitsNavigationController = UINavigationController(rootViewController: HabitsViewController())
+        let infoNavigationController = UINavigationController(rootViewController: InfoViewController())
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.shadowColor = UIColor(red: 60/255, green: 60/255, blue: 0/255, alpha: 0.29)
         navBarAppearance.backgroundColor = UIColor.white.withAlphaComponent(1)
-        navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationController.navigationBar.standardAppearance = navBarAppearance
-        navigationController.navigationBar.compactAppearance = navBarAppearance
-        navigationController.navigationBar.compactScrollEdgeAppearance = navBarAppearance
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.tintColor = .appPurple
+        habitsNavigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        habitsNavigationController.navigationBar.standardAppearance = navBarAppearance
+        habitsNavigationController.navigationBar.compactAppearance = navBarAppearance
+        habitsNavigationController.navigationBar.compactScrollEdgeAppearance = navBarAppearance
+        
+        infoNavigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        infoNavigationController.navigationBar.standardAppearance = navBarAppearance
+        infoNavigationController.navigationBar.compactAppearance = navBarAppearance
+        infoNavigationController.navigationBar.compactScrollEdgeAppearance = navBarAppearance
+        
+        habitsNavigationController.navigationBar.prefersLargeTitles = true
+        habitsNavigationController.navigationBar.tintColor = .appPurple
         
         self.viewControllers = [
             setVC(
-                viewController: navigationController,
+                viewController: habitsNavigationController,
                 title: "Привычки",
                 image: UIImage(named: "habitsImage")),
             setVC(
-                viewController: InfoViewController(),
+                viewController: infoNavigationController,
                 title: "Информация",
                 image: UIImage(named: "infoImage"))
         ]

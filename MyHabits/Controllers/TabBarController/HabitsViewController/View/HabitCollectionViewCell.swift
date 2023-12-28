@@ -50,7 +50,7 @@ final class HabitCollectionViewCell: UICollectionViewCell {
         counterNumber.text = "2"
         return counterNumber
     }()
-    lazy var trackHabitButton: UIButton = {
+    private lazy var trackHabitButton: UIButton = {
         let trackHabitButton = UIButton(type: .system)
         trackHabitButton.translatesAutoresizingMaskIntoConstraints = false
         trackHabitButton.addTarget(self, action: #selector(trackHabitButtonTapped), for: .touchUpInside)

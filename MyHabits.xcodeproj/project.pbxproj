@@ -16,6 +16,7 @@
 		A91F6DEF2AFFAC96005AE9D9 /* MyHabitsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6DEE2AFFAC96005AE9D9 /* MyHabitsUITestsLaunchTests.swift */; };
 		A91F6E022AFFB385005AE9D9 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6E012AFFB385005AE9D9 /* HabitsStore.swift */; };
 		A91F6E042AFFC679005AE9D9 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */; };
+		A96D54192B3CD95500BC0C66 /* DatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96D54182B3CD95500BC0C66 /* DatesTableViewCell.swift */; };
 		A9D21D772AFFDAC60016BAAF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D762AFFDAC60016BAAF /* InfoViewController.swift */; };
 		A9D21D7F2B0003230016BAAF /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D7E2B0003230016BAAF /* AppColors.swift */; };
 		A9D21D832B015C140016BAAF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21D822B015C140016BAAF /* MainTabBarController.swift */; };
@@ -24,6 +25,7 @@
 		A9D21DD92B08EE060016BAAF /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D21DD82B08EE060016BAAF /* HabitViewController.swift */; };
 		A9D85F942B3642E40008B461 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D85F932B3642E40008B461 /* ExtensionUIView.swift */; };
 		A9D85F9A2B3A129C0008B461 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D85F992B3A129C0008B461 /* AlertController.swift */; };
+		A9D85F9C2B3C45A40008B461 /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D85F9B2B3C45A40008B461 /* HabitDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		A91F6DEE2AFFAC96005AE9D9 /* MyHabitsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHabitsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A91F6E012AFFB385005AE9D9 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
+		A96D54182B3CD95500BC0C66 /* DatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesTableViewCell.swift; sourceTree = "<group>"; };
 		A9D21D762AFFDAC60016BAAF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A9D21D7E2B0003230016BAAF /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		A9D21D822B015C140016BAAF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		A9D21DD82B08EE060016BAAF /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		A9D85F932B3642E40008B461 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		A9D85F992B3A129C0008B461 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		A9D85F9B2B3C45A40008B461 /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 			children = (
 				A9D21D842B0242080016BAAF /* HabitCollectionViewCell.swift */,
 				A9D21D862B0243AA0016BAAF /* ProgressCollectionViewCell.swift */,
+				A96D54182B3CD95500BC0C66 /* DatesTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 			children = (
 				A91F6E032AFFC679005AE9D9 /* HabitsViewController.swift */,
 				A9D21DD82B08EE060016BAAF /* HabitViewController.swift */,
+				A9D85F9B2B3C45A40008B461 /* HabitDetailsViewController.swift */,
 				A9D85F8E2B3640B00008B461 /* View */,
 			);
 			path = HabitsViewController;
@@ -345,10 +351,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D85F9C2B3C45A40008B461 /* HabitDetailsViewController.swift in Sources */,
 				A9D85F9A2B3A129C0008B461 /* AlertController.swift in Sources */,
 				A91F6E022AFFB385005AE9D9 /* HabitsStore.swift in Sources */,
 				A9D21D7F2B0003230016BAAF /* AppColors.swift in Sources */,
 				A91F6DCC2AFFAC95005AE9D9 /* AppDelegate.swift in Sources */,
+				A96D54192B3CD95500BC0C66 /* DatesTableViewCell.swift in Sources */,
 				A9D21D832B015C140016BAAF /* MainTabBarController.swift in Sources */,
 				A91F6E042AFFC679005AE9D9 /* HabitsViewController.swift in Sources */,
 				A9D21D872B0243AA0016BAAF /* ProgressCollectionViewCell.swift in Sources */,
@@ -537,7 +545,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -569,7 +578,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

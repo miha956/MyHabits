@@ -11,7 +11,6 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    let store = HabitsStore.shared
     
     // MARK: - Subviews
     
@@ -64,8 +63,6 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     private func tuneView() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
-        todayProgress.progress = store.todayProgress
-        progressCountLabel.text = "\(todayProgress.progress)%"
     }
     
     private func addSubViews() {
@@ -77,7 +74,6 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraints() {
 
-        
         NSLayoutConstraint.activate([
             mottoLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
             mottoLabel.heightAnchor.constraint(equalToConstant: 18),
@@ -93,8 +89,14 @@ final class ProgressCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public
     public func updateData(habitsStore: HabitsStore) {
-        let store = HabitsStore.shared
-        todayProgress.progress = store.todayProgress
-        progressCountLabel.text = "\(Int(store.todayProgress * 100))%"
+        progressCountLabel.text = "\(Int(habitsStore.todayProgress * 100))%"
+        todayProgress.progress = habitsStore.todayProgress
+    }
+    public func animateProgress() {
+        UIView.animate(withDuration: 10) {
+            self.backgroundColor = .red
+//            self.progressCountLabel.text = "\(Int(habitsStore.todayProgress * 100))%"
+//            self.todayProgress.progress = habitsStore.todayProgress
+        }
     }
 }
