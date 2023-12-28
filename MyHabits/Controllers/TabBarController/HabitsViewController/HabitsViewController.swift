@@ -147,10 +147,11 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let navigationController = navigationController else { return }
-        let vc = HabitDetailsViewController()
-        vc.updateData(indexPath: indexPath)
-        navigationController.pushViewController(vc, animated: true)
+        if indexPath.row > 0 {
+            guard let navigationController = navigationController else { return }
+            let vc = HabitDetailsViewController()
+            vc.updateData(indexPath: indexPath)
+            navigationController.pushViewController(vc, animated: true)
+        }
     }
 }
