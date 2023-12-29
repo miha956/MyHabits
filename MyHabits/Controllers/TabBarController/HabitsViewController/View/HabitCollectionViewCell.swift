@@ -115,12 +115,12 @@ final class HabitCollectionViewCell: UICollectionViewCell {
     // MARK: - Public
     
     public func updateData(habits: [Habit], indexPath: IndexPath) {
-        nameLabel.text = habits[indexPath.row - 1].name
-        nameLabel.textColor = habits[indexPath.row - 1].color
-        trackHabitButton.tintColor = habits[indexPath.row - 1].color
-        repeatDateLabel.text = habits[indexPath.row - 1].dateString
-        counterNumber.text = String(habits[indexPath.row - 1].trackDates.count)
-        if habits[indexPath.row - 1].isAlreadyTakenToday == true {
+        nameLabel.text = habits[indexPath.row].name
+        nameLabel.textColor = habits[indexPath.row].color
+        trackHabitButton.tintColor = habits[indexPath.row].color
+        repeatDateLabel.text = habits[indexPath.row].dateString
+        counterNumber.text = String(habits[indexPath.row].trackDates.count)
+        if habits[indexPath.row].isAlreadyTakenToday == true {
             let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 38)
             let symbolImage = UIImage(systemName: "checkmark.circle.fill", withConfiguration: symbolConfiguration)
             trackHabitButton.setImage(symbolImage, for: .normal)

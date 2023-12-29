@@ -87,7 +87,7 @@ final class HabitDetailsViewController: UIViewController {
     // MARK: - Public
     
     public func updateData(indexPath: IndexPath) {
-        title = store.habits[indexPath.row - 1].name
+        title = store.habits[indexPath.row].name
         habitIndexPath = indexPath
     }
 }
@@ -100,7 +100,7 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dateCell = datesTableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! DatesTableViewCell
-        let chackmark = store.habit(store.habits[(habitIndexPath?.row ?? 0) - 1], isTrackedIn: store.dates.sorted(by: >)[indexPath.row])
+        let chackmark = store.habit(store.habits[(habitIndexPath?.row ?? 0)], isTrackedIn: store.dates.sorted(by: >)[indexPath.row])
         let date = store.trackDateString(forIndex: store.dates.count - indexPath.row - 1) ?? "error"
             dateCell.updateData(date: date, chackmark: chackmark)
         return dateCell

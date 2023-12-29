@@ -24,6 +24,30 @@ final class HabitsViewController: UIViewController {
         addHabitButton.tintColor = .appPurple
         return addHabitButton
     }()
+    private lazy var congratulationView: UIView = {
+        let congratulationView = UIView(frame: CGRect(x: UIScreen.main.bounds.midX - 125, y: UIScreen.main.bounds.midY - 125, width: 250, height: 250))
+        //congratulationView.translatesAutoresizingMaskIntoConstraints = false
+        congratulationView.backgroundColor = .appPurple
+        congratulationView.layer.cornerRadius = congratulationView.frame.height/10
+        congratulationView.clipsToBounds = true
+        congratulationView.alpha = 0
+        return congratulationView
+    }()
+    let congratulationLabel: UILabel = {
+        let congratulationLabel = UILabel()
+        congratulationLabel.text = 
+        """
+        Поздравляем!
+        
+        Вы выполнили все привычки.
+        
+        Так держать!
+
+        """
+        congratulationLabel.translatesAutoresizingMaskIntoConstraints = false
+        congratulationLabel.numberOfLines = 0
+        return congratulationLabel
+    }()
     
     // MARK: - Lifecycle
     
@@ -49,6 +73,18 @@ final class HabitsViewController: UIViewController {
     private func addSabviews() {
         navigationItem.rightBarButtonItem = addHabitButton
         self.view.addSubview(habitsCollection)
+    }
+    
+    private func showCongratulationView() {
+        self.view.addSubview(congratulationView)
+        self.view.bringSubviewToFront(congratulationView)
+        congratulationView.addSubview(congratulationLabel)
+        NSLayoutConstraint.activate([
+            congratulationLabel.topAnchor.constraint(equalTo: congratulationView.topAnchor, constant: 16),
+            congratulationLabel.leadingAnchor.constraint(equalTo: congratulationView.leadingAnchor, constant: 16),
+            congratulationLabel.trailingAnchor.constraint(equalTo: congratulationView.trailingAnchor, constant: -16),
+            congratulationLabel.bottomAnchor.constraint(equalTo: congratulationView.bottomAnchor, constant: -16),
+        ])
     }
     
     private func tuneCollectionView() {
@@ -103,8 +139,17 @@ final class HabitsViewController: UIViewController {
 
 extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        HabitsStore.shared.habits.count + 1
+        switch section {
+        case 1 :
+            return HabitsStore.shared.habits.count
+        default:
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -112,16 +157,20 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let progressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "progressCell", for: indexPath) as! ProgressCollectionViewCell
         let habitCell = collectionView.dequeueReusableCell(withReuseIdentifier: "habitCell", for: indexPath) as! HabitCollectionViewCell
         
-        switch indexPath.row {
+        switch indexPath.section {
         case 0 :
-               progressCell.updateData(habitsStore: store)
-                //progressCell.animateProgress()
+            progressCell.animateProgress(habitsStore: store)
+            if store.todayProgress == 1 {
+                UIView.animate(withDuration: 1) {
+                    self.showCongratulationView()
+                    self.congratulationView.alpha = 1
+                }
+            }
             return progressCell
         default:
+            
             habitCell.updateData(habits: store.habits, indexPath: indexPath)
-            
-            let habit = self.store.habits[indexPath.row - 1]
-            
+            let habit = self.store.habits[indexPath.row]
             habitCell.tapTrackHabit = {
                 if habit.isAlreadyTakenToday {
                     print("уже затрекана")
@@ -139,7 +188,7 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             return CGSize(width: view.frame.width - 30, height: 60)
         } else {
             return CGSize(width: view.frame.width - 30, height: 130)
@@ -147,7 +196,7 @@ extension HabitsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row > 0 {
+        if indexPath.section > 0 {
             guard let navigationController = navigationController else { return }
             let vc = HabitDetailsViewController()
             vc.updateData(indexPath: indexPath)
